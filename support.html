@@ -1,0 +1,222 @@
+
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thuốc An Tâm | Trang Tài Nguyên</title>
+    <!-- Tải Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Thiết lập font Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* Nền nhẹ nhàng */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-500': '#3b82f6', // Xanh dương chủ đạo
+                        'primary-600': '#2563eb',
+                        'secondary-100': '#ecfdf5', // Xanh lá nhạt cho thông báo tích cực
+                        'secondary-500': '#10b981',
+                        'secondary-600': '#059669',
+                        'bg-muted': '#f0f4f7',
+                        'text-muted': '#64748b',
+                        'secondary-800': '#065f46'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header (Thanh điều hướng) -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-primary-600 cursor-pointer">
+                <a href="index.html">Thuốc An Tâm <span class="text-secondary-500 text-sm font-normal">Trực Tuyến</span></a>
+            </h1>
+            <div class="space-x-4 flex items-center">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-150 p-2 rounded-lg">Trang Chủ</a>
+                <a href="soucre.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-150 p-2 rounded-lg">Tư Vấn</a>
+                <a href="support.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-150 p-2 rounded-lg bg-bg-muted text-primary-600">Tài Nguyên</a>
+                <a href="soucre.html" class="bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300 shadow-lg shadow-primary-500/50">
+                    Đặt Lịch
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content (Nội dung chính) -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+        <h2 class="text-4xl font-bold text-gray-800 mb-10 text-center">Kho Tài Nguyên Hỗ Trợ Tinh Thần</h2>
+
+        <!-- Bài Viết -->
+        <section class="mb-12">
+            <h3 class="text-3xl font-bold text-primary-600 mb-6">Bài Viết Chuyên Sâu Về Stress & Lo Âu</h3>
+            <div id="articles-container" class="grid md:grid-cols-3 gap-6">
+                <!-- Articles will be injected here by JS -->
+            </div>
+        </section>
+
+        <!-- Video Thư Giãn -->
+        <section class="mb-12">
+            <h3 class="text-3xl font-bold text-primary-600 mb-6">Video Hướng Dẫn Thư Giãn & Thiền</h3>
+            <div id="videos-container" class="grid md:grid-cols-2 gap-6">
+                <!-- Videos will be injected here by JS -->
+            </div>
+        </section>
+
+        <!-- Quiz Tự Đánh Giá -->
+        <section class="bg-bg-muted p-8 rounded-2xl shadow-xl">
+            <h3 class="text-3xl font-bold text-primary-600 mb-6">Quiz Tự Đánh Giá Mức Độ Căng Thẳng (Mock)</h3>
+            <form id="self-quiz" class="max-w-3xl mx-auto">
+                <div id="quiz-questions-container">
+                    <!-- Quiz Questions will be injected here by JS -->
+                </div>
+                <div id="quiz-result" class="mt-6 p-4 bg-secondary-100 border-l-4 border-secondary-500 text-secondary-800 hidden rounded-md font-medium">
+                    <!-- Kết quả sẽ hiển thị ở đây -->
+                </div>
+                <button type="submit" class="mt-6 bg-secondary-500 hover:bg-secondary-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full">
+                    Xem Kết Quả Đánh Giá
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer (Chân trang) -->
+    <footer class="bg-gray-800 text-white mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <div class="mb-4">
+                <a href="#" class="text-gray-400 hover:text-white mx-3">Về chúng tôi</a>
+                <a href="#" class="text-gray-400 hover:text-white mx-3">Chính sách bảo mật</a>
+                <a href="#" class="text-gray-400 hover:text-white mx-3">Liên hệ</a>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2024 Thuốc An Tâm. Mọi quyền được bảo lưu. <br>Hỗ trợ tâm lý chuyên nghiệp, mọi lúc mọi nơi.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript logic for Resources Page -->
+    <script>
+        const MOCK_DATA = {
+            articles: [
+                { id: 1, title: "5 Cách Quản Lý Căng Thẳng Hiệu Quả Trong Công Việc", excerpt: "Học cách thiết lập ranh giới và áp dụng kỹ thuật chánh niệm để giảm bớt áp lực...", date: "2024-10-01" },
+                { id: 2, title: "Làm Sao Để Ngủ Ngon Hơn Khi Lo Âu", excerpt: "Khám phá các phương pháp vệ sinh giấc ngủ và bài tập hít thở giúp bạn dễ dàng đi vào giấc ngủ...", date: "2024-09-25" },
+                { id: 3, title: "Dấu Hiệu Của Trầm Cảm Và Khi Nào Cần Tìm Kiếm Trợ Giúp", excerpt: "Nhận biết sớm các triệu chứng để có thể can thiệp kịp thời. Sức khỏe tâm thần quan trọng như sức khỏe thể chất.", date: "2024-09-18" },
+            ],
+            videos: [
+                { id: 1, title: "Video Thư Giãn 10 Phút Với Âm Thanh Thiên Nhiên", duration: "10:15", mockLink: "https://www.youtube.com/embed/j_8j_I6zY-k?si=1fKx8sWzF9jRkO6a" },
+                { id: 2, title: "Hướng Dẫn Thiền Định Cho Người Mới Bắt Đầu", duration: "7:00", mockLink: "https://www.youtube.com/embed/O-6f5w-71aU?si=2z3w_xJt6A-j9l5w" },
+            ],
+            quiz: [
+                { id: 1, question: "Bạn cảm thấy khó khăn trong việc tập trung vào công việc/học tập bao lâu trong 2 tuần qua?", options: ["Không bao giờ", "Vài ngày", "Hơn nửa số ngày", "Gần như mỗi ngày"] },
+                { id: 2, question: "Bạn cảm thấy lo lắng, bồn chồn hoặc không thể dừng lo lắng trong bao lâu trong 2 tuần qua?", options: ["Không bao giờ", "Vài ngày", "Hơn nửa số ngày", "Gần như mỗi ngày"] },
+                { id: 3, question: "Bạn cảm thấy mệt mỏi hoặc thiếu năng lượng trong bao lâu trong 2 tuần qua?", options: ["Không bao giờ", "Vài ngày", "Hơn nửa số ngày", "Gần như mỗi ngày"] },
+                { id: 4, question: "Bạn cảm thấy khó khăn trong việc kiểm soát các suy nghĩ tiêu cực trong bao lâu trong 2 tuần qua?", options: ["Không bao giờ", "Vài ngày", "Hơn nửa số ngày", "Gần như mỗi ngày"] },
+                { id: 5, question: "Bạn có bị gay không ?", options: ["Không", "Vài ngày", "Hơn nửa số ngày", "Gần như mỗi ngày"] },
+            ],
+        };
+
+        function renderResourcesContent() {
+            const articlesHtml = MOCK_DATA.articles.map(a => `
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-primary-500 hover:shadow-lg transition duration-300">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2">${a.title}</h4>
+                    <p class="text-gray-600 mb-3 text-sm">${a.excerpt}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-text-muted">Ngày đăng: ${a.date}</span>
+                        <a href="#" class="text-primary-500 hover:text-primary-600 font-medium text-sm">Đọc tiếp &rarr;</a>
+                    </div>
+                </div>
+            `).join('');
+
+            const videosHtml = MOCK_DATA.videos.map(v => `
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="aspect-video bg-gray-200">
+                        <iframe width="100%" height="100%" src="${v.mockLink}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-800 mb-1">${v.title}</h4>
+                        <span class="text-xs text-text-muted">${v.duration} | Thư giãn</span>
+                    </div>
+                </div>
+            `).join('');
+
+            const quizQuestionsHtml = MOCK_DATA.quiz.map((q, index) => `
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg bg-white shadow-sm">
+                    <p class="font-medium text-gray-800 mb-3">Câu ${index + 1}: ${q.question}</p>
+                    <div class="space-y-2">
+                        ${q.options.map((option, optIndex) => `
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="radio" name="quiz-q${q.id}" value="${optIndex + 1}" class="form-radio text-primary-500 h-4 w-4">
+                                <span class="text-gray-600">${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('articles-container').innerHTML = articlesHtml;
+            document.getElementById('videos-container').innerHTML = videosHtml;
+            document.getElementById('quiz-questions-container').innerHTML = quizQuestionsHtml;
+        }
+
+        /**
+         * Xử lý Quiz tự đánh giá
+         * @param {Event} e
+         */
+        function handleQuizSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const resultDiv = document.getElementById('quiz-result');
+            let totalScore = 0;
+            let answeredCount = 0;
+
+            MOCK_DATA.quiz.forEach(q => {
+                const selected = form.elements[`quiz-q${q.id}`].value;
+                if (selected) {
+                    // Giả định điểm từ 1 (Không bao giờ) đến 4 (Gần như mỗi ngày)
+                    totalScore += parseInt(selected, 10);
+                    answeredCount++;
+                }
+            });
+
+            if (answeredCount < MOCK_DATA.quiz.length) {
+                resultDiv.classList.remove('hidden', 'bg-secondary-100', 'border-secondary-500', 'text-secondary-800');
+                resultDiv.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
+                resultDiv.innerHTML = 'Vui lòng trả lời tất cả các câu hỏi trước khi xem kết quả.';
+                return;
+            }
+
+            const maxScore = MOCK_DATA.quiz.length * 4;
+            let resultText = '';
+
+            if (totalScore <= 5) {
+                resultText = 'Mức độ căng thẳng thấp. Bạn đang quản lý cảm xúc rất tốt! Hãy tiếp tục duy trì thói quen tích cực.';
+            } else if (totalScore <= 8) {
+                resultText = 'Mức độ căng thẳng trung bình. Đôi khi bạn gặp khó khăn. Hãy thử áp dụng các bài tập thư giãn trong phần Tài nguyên.';
+            } else {
+                resultText = 'Mức độ căng thẳng cao và bạn bị gay. Bạn nên cân nhắc đặt lịch tư vấn với chuyên gia để nhận được sự hỗ trợ kịp thời và cá nhân hóa. Sức khỏe tinh thần của bạn rất quan trọng!';
+            }
+
+            resultDiv.classList.remove('hidden', 'bg-red-100', 'border-red-500', 'text-red-800');
+            resultDiv.classList.add('bg-secondary-100', 'border-secondary-500', 'text-secondary-800');
+            resultDiv.innerHTML = `
+                <p class="text-lg font-bold mb-1">Kết quả của bạn (Điểm: ${totalScore}/${maxScore})</p>
+                <p>${resultText}</p>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderResourcesContent();
+            document.getElementById('self-quiz').addEventListener('submit', handleQuizSubmit);
+        });
+
+        
+    </script>
+</body>
+</html>

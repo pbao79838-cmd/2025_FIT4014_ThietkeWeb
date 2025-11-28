@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thuốc An Tâm | Trang Tư Vấn</title>
+    <!-- Tải Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Thiết lập font Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* Nền nhẹ nhàng */
+        }
+        /* Custom scrollbar for chat/history */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #a8a8a8;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background-color: #e2e8f0;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-500': '#3b82f6', // Xanh dương chủ đạo
+                        'primary-600': '#2563eb',
+                        'secondary-100': '#ecfdf5', // Xanh lá nhạt cho thông báo tích cực
+                        'secondary-500': '#10b981',
+                        'bg-light': '#fefcfb',
+                        'bg-muted': '#f0f4f7',
+                        'text-muted': '#64748b',
+                        'primary-100': '#e0f2fe',
+                        'primary-800': '#1e40af',
+                        'primary-200': '#bfdbfe',
+                        'secondary-700': '#047857',
+                        'secondary-300': '#a7f3d0'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header (Thanh điều hướng) -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-primary-600 cursor-pointer">
+                <a href="index.html">Thuốc An Tâm <span class="text-secondary-500 text-sm font-normal">Trực Tuyến</span></a>
+            </h1>
+            <div class="space-x-4 flex items-center">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-150 p-2 rounded-lg">Trang Chủ</a>
+                <a href="soucre.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-150 p-2 rounded-lg bg-bg-muted text-primary-600">Tư Vấn</a>
+                <a href="support.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-150 p-2 rounded-lg">Tài Nguyên</a>
+                <a href="soucre.html" class="bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300 shadow-lg shadow-primary-500/50">
+                    Đặt Lịch
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content (Nội dung chính) -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+        <h2 class="text-4xl font-bold text-primary-600 mb-8 text-center">Bắt Đầu Hành Trình Hồi Phục</h2>
+        <div class="grid lg:grid-cols-3 gap-8">
+
+            <!-- Lịch Sử Phiên (Trái) -->
+            <div class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-xl">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Lịch Sử Phiên Tư Vấn</h3>
+                <div id="history-container" class="space-y-4 custom-scrollbar max-h-96 overflow-y-auto pr-2">
+                    <!-- History will be injected here by JS -->
+                </div>
+                <p class="text-sm text-center text-text-muted mt-4">Tất cả các phiên đã hoàn thành được lưu tại đây.</p>
+            </div>
+
+            <!-- Form Câu Hỏi Ban Đầu & Giao Diện Chat (Phải) -->
+            <div class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-xl">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6">1. Câu Hỏi Ban Đầu</h3>
+                <form id="initial-form" class="space-y-4 mb-8 border-b pb-6">
+                    <div>
+                        <label for="concern" class="block text-sm font-medium text-gray-700 mb-1">Vấn đề chính của bạn là gì? (Ví dụ: Lo âu, căng thẳng, trầm cảm)</label>
+                        <input type="text" id="concern" name="concern" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition duration-150">
+                    </div>
+                    <div>
+                        <label for="detail" class="block text-sm font-medium text-gray-700 mb-1">Mô tả chi tiết tình trạng của bạn (Bạn đã trải qua điều này bao lâu?)</label>
+                        <textarea id="detail" name="detail" rows="4" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition duration-150"></textarea>
+                    </div>
+                    <button type="submit" class="bg-primary-500 hover:bg-primary-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-[1.01] w-full">
+                        Gửi Yêu Cầu và Chờ Chuyên Gia Kết Nối
+                    </button>
+                </form>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 mt-10">2. Giao Tiếp Trực Tuyến</h3>
+                <div class="bg-bg-muted rounded-xl p-4 shadow-inner">
+                    <!-- Chat Simulation Area -->
+                    <div id="chat-box" class="h-80 overflow-y-auto custom-scrollbar p-3 space-y-4 mb-4">
+                        <!-- Initial Expert Message -->
+                        <div class="flex justify-start">
+                            <div class="bg-primary-100 p-3 rounded-xl rounded-tl-none max-w-[80%] shadow-md">
+                                <p class="font-semibold text-primary-800 text-sm">Chuyên gia Mai (Tư vấn viên)</p>
+                                <p class="text-gray-800 mt-1">Chào bạn! Cảm ơn bạn đã tin tưởng Thuốc An Tâm. Hãy chia sẻ thêm về cảm xúc hiện tại của bạn nhé.</p>
+                                <span class="text-xs text-text-muted block text-right mt-1">09:00 SA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Input Form -->
+                    <form id="chat-form" class="flex items-center space-x-3">
+                        <input type="text" id="chat-input" placeholder="Nhập tin nhắn của bạn..." class="flex-grow p-3 border border-gray-300 rounded-full focus:ring-secondary-500 focus:border-secondary-500 transition duration-150">
+                        <button type="submit" class="bg-secondary-500 hover:bg-secondary-600 text-white p-3 rounded-full transition duration-300 shadow-lg">
+                            <svg class="w-6 h-6 transform rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Chân trang) -->
+    <footer class="bg-gray-800 text-white mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <div class="mb-4">
+                <a href="#" class="text-gray-400 hover:text-white mx-3">Về chúng tôi</a>
+                <a href="#" class="text-gray-400 hover:text-white mx-3">Chính sách bảo mật</a>
+                <a href="#" class="text-gray-400 hover:text-white mx-3">Liên hệ</a>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2024 Thuốc An Tâm. Mọi quyền được bảo lưu. <br>Hỗ trợ tâm lý chuyên nghiệp, mọi lúc mọi nơi.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript logic for Consultation Page -->
+    <script>
+        const MOCK_DATA = {
+            history: [
+                { date: "2024-08-15", topic: "Quản lý lo âu xã hội", expert: "Chuyên gia Hùng", duration: "60 phút" },
+                { date: "2024-07-20", topic: "Cân bằng công việc & cuộc sống", expert: "Chuyên gia Mai", duration: "45 phút" },
+            ]
+        };
+
+        function renderHistory() {
+            const historyHtml = MOCK_DATA.history.map(h => `
+                <div class="p-4 bg-white rounded-lg shadow-sm border border-gray-100 mb-3">
+                    <p class="font-semibold text-gray-800">${h.topic}</p>
+                    <p class="text-sm text-text-muted">Ngày: ${h.date} | Chuyên gia: ${h.expert} | Thời lượng: ${h.duration}</p>
+                </div>
+            `).join('');
+            document.getElementById('history-container').innerHTML = historyHtml;
+        }
+
+        /**
+         * Xử lý gửi tin nhắn chat (giả lập)
+         * @param {Event} e
+         */
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const chatBox = document.getElementById('chat-box');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // 1. Hiển thị tin nhắn người dùng
+            const userMsg = document.createElement('div');
+            userMsg.className = 'flex justify-end';
+            userMsg.innerHTML = `
+                <div class="bg-primary-500 text-white p-3 rounded-xl rounded-tr-none max-w-[80%] shadow-md">
+                    <p>${message}</p>
+                    <span class="text-xs text-primary-200 block text-right mt-1">${new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'})}</span>
+                </div>
+            `;
+            chatBox.appendChild(userMsg);
+            input.value = '';
+
+            // 2. Phản hồi giả lập từ chuyên gia
+            setTimeout(() => {
+                const expertResponse = `Cảm ơn bạn đã chia sẻ, ${message.length > 50 ? 'tôi đã ghi nhận các vấn đề của bạn' : 'đây là một bước rất can đảm'}. Tôi hiểu bạn đang cảm thấy không thoải mái. Hãy cùng nhau xem xét chi tiết hơn nhé.`;
+                const expertMsg = document.createElement('div');
+                expertMsg.className = 'flex justify-start';
+                expertMsg.innerHTML = `
+                    <div class="bg-primary-100 p-3 rounded-xl rounded-tl-none max-w-[80%] shadow-md">
+                        <p class="font-semibold text-primary-800 text-sm">Chuyên gia Mai</p>
+                        <p class="text-gray-800 mt-1">${expertResponse}</p>
+                        <span class="text-xs text-text-muted block text-right mt-1">${new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'})}</span>
+                    </div>
+                `;
+                chatBox.appendChild(expertMsg);
+                chatBox.scrollTop = chatBox.scrollHeight; // Cuộn xuống cuối
+            }, 1500);
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        /**
+         * Xử lý gửi form câu hỏi ban đầu
+         * @param {Event} e
+         */
+        function handleInitialFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const concern = form.elements['concern'].value;
+            const detail = form.elements['detail'].value;
+
+            // Simple confirmation message (using custom UI instead of alert)
+            const chatBox = document.getElementById('chat-box');
+            const confirmationMsg = document.createElement('div');
+            confirmationMsg.className = 'text-center p-3 bg-secondary-100 rounded-lg text-secondary-700 font-medium text-sm border border-secondary-300';
+            confirmationMsg.innerHTML = `
+                Yêu cầu của bạn về vấn đề <strong>"${concern}"</strong> đã được gửi thành công.<br>
+                Chuyên gia đã nhận được thông tin chi tiết: <em>"${detail.substring(0, 50)}..."</em>.
+            `;
+            chatBox.prepend(confirmationMsg);
+
+            // Giả lập tin nhắn người dùng gửi lên hệ thống chat
+            const userSubmission = document.createElement('div');
+            userSubmission.className = 'flex justify-end';
+            userSubmission.innerHTML = `
+                <div class="bg-primary-500 text-white p-3 rounded-xl rounded-tr-none max-w-[80%] shadow-md">
+                    <p>Tôi cần tư vấn về vấn đề: ${concern}</p>
+                    <span class="text-xs text-primary-200 block text-right mt-1">${new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'})}</span>
+                </div>
+            `;
+            chatBox.appendChild(userSubmission);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderHistory();
+            document.getElementById('chat-form').addEventListener('submit', handleChatSubmit);
+            document.getElementById('initial-form').addEventListener('submit', handleInitialFormSubmit);
+        });
+    </script>
+</body>
+</html>
+    <script>
+    tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-500': '#3b82f6', // Xanh dương chủ đạo
+                        'primary-600': '#2563eb',
+                        'secondary-500': '#10b981',
+                        'bg-light': '#fefcfb',
+                        'bg-muted': '#f0f4f7',
+                        'text-muted': '#64748b'
+                    }
+                }
+            }
+        }
+    </script>

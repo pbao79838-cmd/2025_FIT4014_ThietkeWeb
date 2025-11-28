@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thuốc An Tâm | Trang Chủ</title>
+    <!-- Tải Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Thiết lập font Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* Nền nhẹ nhàng */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-500': '#3b82f6', // Xanh dương chủ đạo
+                        'primary-600': '#2563eb',
+                        'secondary-500': '#10b981',
+                        'bg-light': '#fefcfb',
+                        'bg-muted': '#f0f4f7',
+                        'text-muted': '#64748b'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header (Thanh điều hướng) -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-primary-600 cursor-pointer">
+                <a href="index.html">Thuốc An Tâm <span class="text-secondary-500 text-sm font-normal">Trực Tuyến</span></a>
+            </h1>
+            <div class="space-x-4 flex items-center">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-150 p-2 rounded-lg bg-bg-muted text-primary-600">Trang Chủ</a>
+                <a href="soucre.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-150 p-2 rounded-lg">Tư Vấn</a>
+                <a href="support.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-150 p-2 rounded-lg">Tài Nguyên</a>
+                <a href="soucre.html" class="bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300 shadow-lg shadow-primary-500/50">
+                    Đặt Lịch
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content (Nội dung chính) -->
+    <main id="app-content" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+        <!-- Mock Data for Testimonials -->
+        <script>
+            const MOCK_DATA = {
+                testimonials: [
+                    { id: 1, name: "Ngọc Anh (32)", text: "Tôi cảm thấy nhẹ nhõm hơn rất nhiều sau buổi tư vấn. Chuyên gia rất tận tâm và thấu hiểu.", rating: 5 },
+                    { id: 2, name: "Hoàng Minh (25)", text: "Dịch vụ tiện lợi, bảo mật. Giúp tôi vượt qua giai đoạn khó khăn sau chia tay.", rating: 5 },
+                    { id: 3, name: "Thanh Mai (40)", text: "Các bài tập thư giãn trên trang Tài nguyên thực sự hữu ích. Cảm ơn Thuốc An Tâm!", rating: 4.5 },
+                ]
+            };
+
+            const testimonialsHtml = MOCK_DATA.testimonials.map(t => `
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 transform hover:scale-[1.02] transition duration-300">
+                    <div class="flex items-center mb-3">
+                        <span class="text-yellow-400 mr-2">${'★'.repeat(Math.floor(t.rating))}</span>
+                        <span class="text-gray-500 text-sm">(${t.rating})</span>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"${t.text}"</p>
+                    <p class="font-semibold text-primary-500">- ${t.name}</p>
+                </div>
+            `).join('');
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('testimonials-container').innerHTML = testimonialsHtml;
+            });
+        </script>
+
+        <!-- Hero Section -->
+        <section class="text-center py-16 bg-bg-light rounded-2xl shadow-xl mb-12">
+            <h2 class="text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                Tâm Lý Khỏe Mạnh, <span class="text-primary-600">Cuộc Sống Bình An</span>
+            </h2>
+            <p class="text-xl text-text-muted max-w-3xl mx-auto mb-8">
+                Dịch vụ tư vấn sức khỏe tâm lý trực tuyến bảo mật, chuyên nghiệp, giúp bạn vượt qua mọi thử thách cảm xúc.
+            </p>
+            <a href="soucre.html" class="bg-secondary-500 hover:bg-secondary-600 text-white font-bold text-lg py-3 px-8 rounded-full transition duration-300 shadow-xl shadow-secondary-500/50 transform hover:scale-105">
+                Bắt Đầu Tư Vấn Ngay
+            </a>
+            <div class="mt-8 text-sm text-text-muted">
+                <span class="font-medium mr-1">Bảo mật tuyệt đối.</span> <span class="font-medium">Chuyên gia được cấp phép.</span>
+            </div>
+        </section>
+
+        <!-- Giới Thiệu Dịch Vụ -->
+        <section class="py-12">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-10">Tại Sao Chọn Thuốc An Tâm?</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-white rounded-xl shadow-md border-t-4 border-primary-500">
+                    <svg class="w-10 h-10 text-primary-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h4 class="text-xl font-semibold mb-2">Linh Hoạt Thời Gian</h4>
+                    <p class="text-gray-600">Đặt lịch 24/7, tư vấn mọi lúc mọi nơi qua video call hoặc chat.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-md border-t-4 border-secondary-500">
+                    <svg class="w-10 h-10 text-secondary-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.001 12.001 0 002.924 12c0 2.87 1.127 5.71 3.238 7.915A11.996 11.996 0 0012 22c2.87 0 5.71-1.127 7.915-3.238 2.111-2.205 3.238-5.045 3.238-7.915a12.001 12.001 0 00-2.382-6.071z"></path></svg>
+                    <h4 class="text-xl font-semibold mb-2">Bảo Mật Tuyệt Đối</h4>
+                    <p class="text-gray-600">Mọi thông tin cá nhân và nội dung phiên đều được mã hóa và bảo mật.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-md border-t-4 border-indigo-500">
+                    <svg class="w-10 h-10 text-indigo-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-5a2 2 0 012-2h-5a2 2 0 01-2-2zM4 14v6m4-3a3 3 0 00-3-3H6m-2 0a3 3 0 00-3-3h18a3 3 0 003 3v2a3 3 0 01-3 3H3a3 3 0 01-3-3v-2a3 3 0 013-3z"></path></svg>
+                    <h4 class="text-xl font-semibold mb-2">Chuyên Gia Giàu Kinh Nghiệm</h4>
+                    <p class="text-gray-600">Đội ngũ nhà tâm lý học và bác sĩ tâm thần có chuyên môn cao, được đào tạo bài bản.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="py-12 bg-bg-muted rounded-2xl mt-12">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-10">Khách Hàng Nói Gì Về Chúng Tôi</h3>
+            <div id="testimonials-container" class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Testimonials will be injected here by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Chân trang) -->
+    <footer class="bg-gray-800 text-white mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <div class="mb-4">
+                <a href="#" class="text-gray-400 hover:text-white mx-3">Về chúng tôi</a>
+                <a href="#" class="text-gray-400 hover:text-white mx-3">Chính sách bảo mật</a>
+                <a href="#" class="text-gray-400 hover:text-white mx-3">Liên hệ</a>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2024 Thuốc An Tâm. Mọi quyền được bảo lưu. <br>Hỗ trợ tâm lý chuyên nghiệp, mọi lúc mọi nơi.</p>
+        </div>
+    </footer>
+</body>
+</html>
